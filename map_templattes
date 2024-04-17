@@ -1,0 +1,34 @@
+// using map with templetes
+#include <iostream>
+#include<string>
+using namespace std;
+
+template  <typename K, typename V>
+class IntervalMap
+{
+private:
+	K key;
+	V value;
+public:
+	IntervalMap(K k, V v) : key(k), value(v) {}
+	void Assign(K k, V v)
+	{
+		key = k;
+
+		value = v;
+	}
+	V GetValue(K k)
+	{
+		return value;
+	}
+};
+int main()
+{
+	IntervalMap<int, string>  im(1, "Happy new days all the world");
+	cout << "\n " << im.GetValue(1);
+	im.Assign(2, "Best wishes all the world ");
+	cout << "\n " << im.GetValue(2);
+	//--------------------------------------------------------------
+	return(0);
+}
+
