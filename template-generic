@@ -1,0 +1,80 @@
+// template-generic.cpp 
+#include <iostream>
+using namespace std;
+template <typename E>
+void printVar(E x)
+{
+    cout << x << endl;
+}
+
+
+template <typename E>
+void printArray(E arr[], int length)
+{
+    for (int i = 0; i < length; i++)
+    {
+        cout << arr[i] << " ";
+    }
+}
+
+
+template <typename DV>
+DV divide(double x, double y)
+{
+    return x / y;
+}
+
+template <typename B>
+class Box
+{
+private:
+    B x;
+public:
+    void set(B x)
+    {
+        this->x = x;
+    }
+
+    B get()
+    {
+        return x;
+    }
+};
+
+int main()
+{
+    int x = 10;
+    float y = 7.5;
+    string name = "Mhamad";
+
+    printVar(x);
+    printVar(y);
+    printVar(name);
+
+    int arr1[] = { 1, 2, 3, 4, 5 };
+    char arr2[] = { 'a', 'b', 'c', 'd', 'e' };
+    string arr3[] = { "I'm", "learning" ,"C++", "in", "harmash.com" };
+    printArray<int>(arr1, 5);
+    printArray<char>(arr2, 5);
+    printArray<string>(arr3, 5);
+
+    
+    cout << "divide<int>(5,2) = " << divide<int>(5, 2) << endl;
+
+    cout << "divide<double>(5,2) = " << divide<double>(5, 2);
+
+    Box<int> intBox;
+
+    intBox.set(100);
+
+    cout << "intBox contains: " << intBox.get() << endl;
+
+    Box<string> stringBox;
+
+     stringBox.set("I can store string value");
+
+    cout << "stringBox contains: " << stringBox.get();
+
+    return 0;
+}
+
