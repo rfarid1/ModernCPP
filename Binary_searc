@@ -1,0 +1,64 @@
+// Binary search.cpp  
+#include <iostream>
+#include <stack>
+#include <queue>
+ using namespace std;
+
+ struct Node
+ {
+
+	 int value;
+	 Node* left;
+	 Node* right;
+	 Node(int val): value(val),left(nullptr), right(nullptr){}
+
+ };
+   
+ class Tree
+ {
+ public:
+ Node* Insert(Node* root, int val)
+ {
+	 if (root == nullptr) {
+		 return new Node(val);
+	 }
+
+	 if (val < root->value)
+	 {
+		 root->left = Insert(root->left, val);
+	 }
+	 else
+		 root->right = Insert(root->right, val);
+
+	 return root;
+
+ }
+
+	void Display(Node* root)
+	{
+		if (root != nullptr)
+		{
+			cout << root->value << " ";
+			Display(root->left);
+			Display(root->right);
+		}
+		
+	}
+ };
+
+  int main()
+ {
+	 Node* root(nullptr);
+	 Tree t1;
+	 root = t1.Insert(root, 50);
+	 t1.Insert(root, 30);
+	 t1.Insert(root, 70);
+	 t1.Insert(root, 20);
+	 t1.Insert(root, 90);
+	 t1.Insert(root, 15);
+	 t1.Insert(root, 100);
+	 t1.Display(root);
+
+	 //------------------------------
+	 return(0);
+ }
